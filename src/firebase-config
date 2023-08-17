@@ -1,0 +1,20 @@
+
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+import {getAuth} from "firebase/auth"
+import {getFirestore} from "firebase/firestore"
+const firebaseConfig = {
+  apiKey: "AIzaSyBxNNst7bxa-SbiIBr4YDh7yjP5fT9FhSE",
+  authDomain: "fir-adc74.firebaseapp.com",
+  projectId: "fir-adc74",
+  storageBucket: "fir-adc74.appspot.com",
+  messagingSenderId: "291149018544",
+  appId: "1:291149018544:web:a2535cbd9fc8583aac9275",
+  measurementId: "G-2WMCVF8MMK"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);

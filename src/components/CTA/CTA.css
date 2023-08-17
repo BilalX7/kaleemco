@@ -1,0 +1,179 @@
+.contact {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    position: relative;
+    min-height: 100vh;
+    padding: 50px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-image: linear-gradient(to right bottom, #ff6a3d, #ff683a, #ff6637, #ff6334, #ff6131); */
+    /* background-color: #ffc400; */
+    background: rgb(47,72,88);
+    /* background: linear-gradient(297deg, rgba(47,72,88,1) 0%, rgba(255,196,0,1) 0%); */
+    
+}
+.container-contact {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.container-contact .contactInfo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width: 795px) {
+    .container-contact {
+        flex-direction: column;
+    }
+    .container-contact .contactInfo {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .container-contact .contactForm {
+        width: 90%;
+        margin-top: 20px;
+    }
+    .container-contact .contactInfo .box .text {
+        margin-left: 10px;
+    }
+}
+.container-contact .contactInfo .box {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+    
+}
+.container-contact .contactInfo .box .icon {
+    min-width: 60px;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 30px;
+}
+.container-contact .contactInfo .box .text {
+    display: flex;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 16px;
+    flex-direction: column;
+    font-weight: 300;
+    justify-content: space-around;
+}
+.container-contact .contactInfo .box .text h3 {
+    font-weight: 500;
+    color: #bcdee4bb;
+    color: #fff;
+    margin-bottom: 2px;
+    font-size: 22px;
+}
+.container-contact .contactInfo .box .text p{
+    color: #eee;
+}
+.contactForm {
+    width: 40%;
+    padding: 40px;
+    background: #fff;
+}
+.contactForm h2 {
+    font-weight: 500;
+    font-size: 30px;
+    color: #333;
+}
+.contactForm .inputBox {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    resize: none;
+}
+.contactForm .inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none;
+    transition: 0.5s;
+    color: #666;
+}
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span {
+    font-size: 12px;
+    color: rgba(255,196,0,1);
+    color: #33bbcf;
+    transform: translateY(-20px);
+}
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span {
+    font-size: 12px;
+    color: rgba(255,196,0,1);
+    color: #33bbcf;
+   transform: translateY(-20px);
+}
+.contactForm .inputBox input[type="submit"] {
+    /* background-color: rgba(255,196,0,1); */
+    background: linear-gradient( 157.81deg, #def9fa -43.27%, #bef3f5 -21.24%, #9dedf0 12.19%, #7de7eb 29.82%, #5ce1e6 51.94%, #33bbcf 90.29% );
+    width: 100px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+.contactForm .inputBox input[type="submit"]:hover {
+    /* background-color: rgb(231, 179, 8); */
+    background: linear-gradient( 157.81deg, #def9fa -43.27%, #bef3f5 -21.24%, #9dedf0 12.19%, #7de7eb 29.82%, #5ce1e6 51.94%, #33bbcf 90.29% );
+}
+
+.contact-touch {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+}
+.contact-number {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 300;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255,95,95,.1);
+    color: #ff5f5f;
+    color: #4dbffc;
+}
+.contact-touch-info {
+    display: grid;
+    line-height: 1.5;
+}
+.touch-info-title {
+    font-weight: 500;
+    font-size: 22px;
+    color: #ebe3e3;
+}
+.touch-info-details {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(206, 202, 202, 0.87);
+}

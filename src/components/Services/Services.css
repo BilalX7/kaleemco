@@ -1,0 +1,19 @@
+.icon-holder {
+    height: 200px;
+    position: relative;
+}
+.icon-number {
+    font-size: 12rem;
+}
+.icon-holder img {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0;
+    font-size: 5rem;
+    color: #41464a;
+    display: inline;
+}
+.icon-holder svg {
+    display: initial;
+}

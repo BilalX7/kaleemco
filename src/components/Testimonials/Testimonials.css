@@ -1,0 +1,27 @@
+.item {
+    min-height: 30rem;
+}
+.carousel {
+    cursor: grab;
+    overflow: hidden;
+}
+@media (max-width: 800px) {
+    .inner-carousel {
+        flex-direction: column;
+    }
+}
+
+button.btn.topscroll {
+    background: #2f6ebc;
+    background: #7f7f7f;
+    position: fixed;
+    bottom: 11%;
+    overflow: hidden;
+    right: 10px;
+    border-radius: 1px;
+    z-index: 999;
+    transition: .5s;
+}
+button.btn.topscroll:hover {
+    background: #0c3c63
+}

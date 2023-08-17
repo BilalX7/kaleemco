@@ -1,0 +1,12 @@
+.card-age {
+    color: #333 !important;
+    font-size: 30px;
+    line-height: 30px;
+    /* height: 20px; */
+    margin-bottom: 10px;
+}
+.card-age-info {
+    color: rgb(81 73 73 / 70%);
+    font-size: 16px;
+    line-height: 22px;
+}

@@ -1,0 +1,42 @@
+.picture-holder {
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid #dadde1;
+    border-radius: 7px;
+    position: relative;
+}
+.book-photo {
+    width: 137px;
+    height: 192px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+.f_p_p {
+    display: flex;
+    height: 100%;
+}
+.f_p_p picture {
+    align-self: center;
+    width: 100%;
+}
+picture img {
+    border-radius: 0;
+    width: 100%;
+}
+.book-title {
+    margin-top: 10px;
+    height: 53px;
+    font-size: 18px;
+    color: #333;
+    align-self: center;
+    overflow: hidden;
+}
+.book-author {
+    margin-top: 10px;
+    height: 46px;
+    font-size: 16px;
+    color: #333;
+    align-self: center;
+    overflow: hidden;
+}

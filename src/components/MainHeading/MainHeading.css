@@ -1,0 +1,17 @@
+.subtitle-heading {
+    position: relative;
+}
+@media (min-width: 620px) { 
+    .subtitle-heading::after {
+        position: absolute;
+        content: "";
+        width: 120px;
+        transform: translateX(-50%);
+        left: 50%;
+        height: 2px;
+        /* background: rgb(237,195,21);
+        background: linear-gradient(297deg, rgba(237,195,21,1) 0%, rgba(255,196,0,1) 100%); */
+        background: radial-gradient(64.18% 64.18% at 71.16% 35.69%, rgb(222, 249, 250) 0.89%, rgb(190, 243, 245) 17.23%, rgb(157, 237, 240) 42.04%, rgb(125, 231, 235) 55.12%, rgb(92, 225, 230) 71.54%, rgb(51, 187, 207) 100%);
+        bottom: -20px;
+    }
+}
