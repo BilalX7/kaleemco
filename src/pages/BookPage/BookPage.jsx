@@ -8,11 +8,8 @@ const BookPage = () => {
       <div className={`bg-inherit ${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
             <Books />
-        </div>
+        </div>  
       </div>
-      <Footer 
-        className= "footer-books"
-      />
     </>
   )
 }

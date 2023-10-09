@@ -3,6 +3,10 @@
     "title2": "Services",
     "title3": "Books",
     "title4": "Contact",
+    "title5": "Blogs",
+    "title6": "Admin",
+    "title7": "Logout",
+    "login": "Login",
     "hero1": "Get Your First session",
     "hero2": "For Free",
     "hero3": "Start Learning",
@@ -88,5 +92,13 @@
     "booksCat4": "Quranic studies",
     "booksCats": "All",
     "booksMore": "Show More",
-    "booksLess": "Show Less"
+    "booksLess": "Show Less",
+    "adminTitle": "Article",
+    "adminSubtitle": "Share your thoughts",
+    "adminFormTitle": "Upload Form",
+    "adminFormLabel1": "Title:", 
+    "adminFormLabel2": "Article Text:", 
+    "adminFormLabel3": "Image:",
+    "adminButton": "Upload",
+    "footerSocial": "Social Media" 
 }

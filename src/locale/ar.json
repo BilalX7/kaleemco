@@ -3,6 +3,10 @@
     "title2": "خصائص",
     "title3": "الكتب",
     "title4": "تواصل معنا",
+    "title5": "مقالات",
+    "title6": "مسؤول",
+    "title7": "تسجيل الخروج",
+    "login": "تسجيل",
     "hero1": "احصل على جلستك الأولى",
     "hero2": "مجانا",
     "hero3": "ابدأ تعلم",
@@ -88,5 +92,13 @@
     "booksCat4": "دراسات قرآنيّة",
     "booksCats": "الجميع",
     "booksMore": "عرض المزيد",
-    "booksLess": "عرض أقل"
+    "booksLess": "عرض أقل",
+    "adminTitle": "المقال",
+    "adminSubtitle": "شارك أفكارك",
+    "adminFormTitle": "نموذج المقالة",
+    "adminFormLabel1": "المقال:", 
+    "adminFormLabel2": "محتوى المقال:", 
+    "adminFormLabel3": "الصورة:" ,
+    "adminButton": "رفع",
+    "footerSocial": "التواصل الاجتماعي" 
 }

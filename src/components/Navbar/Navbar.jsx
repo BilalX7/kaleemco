@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 // import {navLinks} from '../../constants'
 // import styles from '../../style'
 
+
 const Navbar = () => {
   const [ t, i18n ] = useTranslation();
   const [toggle, setToggle] = useState(false);
@@ -60,6 +61,13 @@ useEffect(() => {
   backPage();
 }, [])
 
+  const role = localStorage.getItem("role");
+  
+  const logout = () => {
+      localStorage.setItem("role", "");
+  }
+  
+
   return (
     <nav className='w-full flex py-6 justify-between items-center navbar'>
       <a href="/">
@@ -67,17 +75,6 @@ useEffect(() => {
       </a>
 
       <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
-        {/* {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`  font-normal cursor-pointer text-[16px]
-             ${index === nav.length - 1 ? "mr-0" : "mr-10" } text-white`}
-          >
-            <a href={`${nav.id}`} className=' duration-300 ease-in'>
-              {nav.title}
-            </a>
-          </li>
-        ))} */}
           <li
             className={`  font-normal cursor-pointer text-[16px] mr-10 text-white`}
           >
@@ -106,6 +103,27 @@ useEffect(() => {
             {t('title4')}
             </a>
           </li>
+          <li
+            className={`  font-normal cursor-pointer text-[16px] mr-10 text-white`}
+          >
+            <a href="/blog" className=' duration-300 ease-in'>
+            {t('title5')}
+            </a>
+          </li>
+          {role == "admin" ? (
+            <>
+              <li className={`  font-normal cursor-pointer text-[16px] mr-10 text-white`}>
+              <a href="/admin" className=' duration-300 ease-in'>
+              {t('title6')}
+              </a>
+            </li>
+            <li className={`  font-normal cursor-pointer text-[16px] mr-10 text-white`}>
+              <a href="/" onClick={logout} className=' duration-300 ease-in'>
+              {t('title7')}
+              </a>
+            </li>
+            </>
+          ) : <li></li> } 
           <li id='language-btn' className='mr-2'>
           <button
             onClick={() => handleLanguageChange('en')}
@@ -130,20 +148,9 @@ useEffect(() => {
             onClick={() => setToggle((prev) => !prev)} />
       </div>
 
-      <div id='nav-mobile' className={`${toggle ? 'flex' : 'hidden'} p-6 bg-black-gradient
+      <div id='nav-mobile' className={`${toggle ? 'flex' : 'hidden'} p-8 bg-black-gradient
         absolute  top-20 right-0 mx-4 min-w-[140px] z-[999] rounded-xl sidebar`}>
           <ul className='list-none flex flex-col justify-end items-center flex-1'>
-              {/* {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-normal cursor-pointer text-[16px]
-                ${index === nav.length - 1 ? "mb-0" : "mb-4" } text-white`}
-              >
-                <a href={`${nav.id}`}>
-                  {nav.title}
-                </a>
-              </li>
-            ))} */}
               <li
                 className={` font-normal cursor-pointer text-[16px] mb-4 text-white`}
               >
@@ -172,6 +179,29 @@ useEffect(() => {
                   {t('title4')}
                 </a>
               </li>
+              <li
+                className={` font-normal cursor-pointer text-[16px] mb-4 text-white`}
+              >
+                <a href="/blog" className=' duration-300 ease-in'>
+                  {t('title5')}
+                </a>
+              </li>
+
+
+              {role == "admin" ? (
+                <>
+                  <li className={`  font-normal cursor-pointer text-[16px] mb-4 text-white`}>
+                  <a href="/admin" className=' duration-300 ease-in'>
+                  {t('title6')}
+                  </a>
+                </li>
+                <li className={`  font-normal cursor-pointer text-[16px] mb-4 text-white`}>
+                  <a href="/" onClick={logout} className=' duration-300 ease-in'>
+                  {t('title7')}
+                  </a>
+                </li>
+                </>
+              ) : <li></li> } 
               <li>
                 <button
                   onClick={() => handleLanguageChange('en')}

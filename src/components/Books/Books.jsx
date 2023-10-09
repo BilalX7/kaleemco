@@ -4,12 +4,19 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import BookItem from "../BookItem/BookItem"; 
 import "./Books.css"
 import styles from "../../style";
+import MainHeading from '../MainHeading/MainHeading'
+import { useTranslation } from 'react-i18next';
+
 function Book() {
+
+  const { t } = useTranslation();
+
   const [booksOne, setBooksOne] = useState([]);
   const [booksTwo, setBooksTwo] = useState([]);
   const [booksThree, setBooksThree] = useState([]);
   const [booksFour, setBooksFour] = useState([]);
   const bookscollection = collection(db, "books");
+
 
   useEffect(() => {
     const getBooks = async () => {
@@ -23,11 +30,10 @@ function Book() {
         setBooksOne(filteredData);
 
         const querryTwo = await getDocs(
-          query(bookscollection, where("category", "==", "في النحو والصرف"))
+        query(bookscollection, where("category", "==", "في النحو والصرف"))
         );
 
         const filteredDataTwo = querryTwo.docs.map((doc) => doc.data());
-        console.log(filteredDataTwo);
         setBooksTwo(filteredDataTwo);
 
         const querryThree = await getDocs(
@@ -35,7 +41,6 @@ function Book() {
         );
 
         const filteredDataThree = querryThree.docs.map((doc) => doc.data());
-        console.log(filteredDataThree);
         setBooksThree(filteredDataThree);
 
          const querryFour = await getDocs(
@@ -43,8 +48,8 @@ function Book() {
         );
 
         const filteredDataFour = querryFour.docs.map((doc) => doc.data());
-        console.log(filteredDataFour);
         setBooksFour(filteredDataFour);
+
       } catch (error) {
         console.error(error);
       }
@@ -56,8 +61,13 @@ function Book() {
   // Render the BookItem components inside the return statement
   return (
     <div>
-
-      <h2 className={`my-4 book-heading`}>أدب عربي</h2>
+      <MainHeading 
+        properties = {{
+          title: t('booksTitle'),
+          subtitle: t('booksSubtitle')
+        }}
+      />
+      <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat1')}</h2>
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         
         {booksOne.map((book) => (
@@ -72,7 +82,7 @@ function Book() {
         ))}
         </div>
 
-        <h2 className={`my-4 book-heading`}>في النحو والصرف</h2>
+        <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat2')}</h2>
         <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {booksTwo.map((book) => (
           <BookItem
@@ -85,7 +95,7 @@ function Book() {
           />
         ))}
       </div>
-      <h2 className={`my-4 book-heading`}>علم نفس</h2>
+      <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat3')}</h2>
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4   ">
         
         {booksThree.map((book) => (
@@ -100,7 +110,7 @@ function Book() {
         ))}
         </div>
 
-        <h2 className={`my-4 book-heading`}>دراسات قرآنيّة</h2>
+        <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat4')}</h2>
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         
         {booksFour.map((book) => (

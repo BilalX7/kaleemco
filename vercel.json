@@ -8,11 +8,12 @@
   "routes": [
     {
       "src": "/firebase/(.*)",
-      "dest": "https://your-firebase-app-id.firebaseapp.com/$1"
+      "dest": "https://fir-adc74.firebaseapp.com/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
+  
 }

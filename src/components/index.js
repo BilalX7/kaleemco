@@ -13,7 +13,12 @@ import MainHeading from "./MainHeading/MainHeading";
 import WhyKaleem from "./WhyKaleem/WhyKaleem"
 import Books from "./Books/Books"
 import BookItem from "./BookItem/BookItem";
+import Article from "./Article/Article";
+import FullArticle from "./Article/FullArticle";
+
 export {
+    Article,
+    FullArticle,
     Navbar,
     Services,
     ServiceItem,

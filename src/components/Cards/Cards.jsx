@@ -8,24 +8,59 @@ import  feature5 from '../../assets/feature5.png'
 import { useTranslation } from 'react-i18next'
 
 import MainHeading from '../MainHeading/MainHeading'
+import { useState, useEffect } from 'react'
 
+import { db } from "../../firebase-config";
+import { collection, query, getDocs } from 'firebase/firestore';
 
 
 const Cards = () => {
 
+  const articleCollection = collection(db, "article");
+  const [articles, setArticles] = useState([]); // Initialize as an empty array
+  
+  // useEffect(() => {
+  //   const getArticles = async () => {
+  //     try {
+  //       const querySnapshot = await getDocs(query(articleCollection));
+  
+  //       const articleData = querySnapshot.docs.map((doc) => doc.data());
+  //       console.log(articleData);
+  //       setArticles(articleData);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  
+  //   getArticles();
+  // }, []);
   const [ t, i18n ] = useTranslation();
 
   return (
-    <section className={`features ${styles.paddingY}`}>
-      {/* <div className='mb-3'>
-        <h1 className='font-semibold xs:text-[48px] text-[40px]
-        text-white text-center md:text-[42px]'>
-          {t('cardsTitle')}
-        </h1>
-        <p className='subtitle-heading font-light text-sky-300 tracking-wider
-        mb-[40px] w-3/4 mx-auto uppercase text-lg text-center'>
-          {t('cardsSubtitle')}</p>
-      </div> */}
+    <section className={`features ${styles.paddingY}`}>  
+
+
+    {/* <div>
+      <h1 className="text-3xl font-bold mb-4">Articles</h1>
+      <div>
+        {articles.map((article, index) => (
+          <div key={index} className="bg-white p-4 shadow-md rounded-lg mb-4">
+            <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+            {article.image && (
+              <img
+                src={article.image}
+                alt={article.title}
+                className="mb-4 rounded-lg"
+                style={{ maxWidth: "100%" }}
+              />
+            )}
+            <p className="text-gray-700">{article.text}</p>
+          </div>
+        ))}
+      </div>
+    </div> */}
+
+      {/* {articles.map((article))} */}
       <MainHeading 
         properties = {{
           title: t('cardsTitle'),
