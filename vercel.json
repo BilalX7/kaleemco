@@ -1,12 +1,19 @@
 {
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
-      "src": "/",
-      "dest": "/"
+      "src": "/firebase/(.*)",
+      "dest": "https://fir-adc74.firebaseapp.com/$1"
     },
     {
-      "src": "/test",
-      "dest": "/"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
+  
 }
