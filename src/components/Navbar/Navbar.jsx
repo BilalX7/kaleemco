@@ -99,15 +99,15 @@ useEffect(() => {
           <li
             className={`  font-normal cursor-pointer text-[16px] mr-10 text-white`}
           >
-            <a href="#contact" className=' duration-300 ease-in'>
-            {t('title4')}
+            <a href="/blog" className=' duration-300 ease-in'>
+            {t('title5')}
             </a>
           </li>
           <li
             className={`  font-normal cursor-pointer text-[16px] mr-10 text-white`}
           >
-            <a href="/blog" className=' duration-300 ease-in'>
-            {t('title5')}
+            <a href="#contact" className=' duration-300 ease-in'>
+            {t('title4')}
             </a>
           </li>
           {role == "admin" ? (
@@ -175,15 +175,15 @@ useEffect(() => {
               <li
                 className={` font-normal cursor-pointer text-[16px] mb-4 text-white`}
               >
-                <a href="#contact" className=' duration-300 ease-in'>
-                  {t('title4')}
+                <a href="/blog" className=' duration-300 ease-in'>
+                  {t('title5')}
                 </a>
               </li>
               <li
                 className={` font-normal cursor-pointer text-[16px] mb-4 text-white`}
               >
-                <a href="/blog" className=' duration-300 ease-in'>
-                  {t('title5')}
+                <a href="#contact" className=' duration-300 ease-in'>
+                  {t('title4')}
                 </a>
               </li>
 

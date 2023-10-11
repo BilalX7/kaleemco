@@ -6,11 +6,14 @@ import "./Books.css"
 import styles from "../../style";
 import MainHeading from '../MainHeading/MainHeading'
 import { useTranslation } from 'react-i18next';
+import {MdExpandMore, MdExpandLess} from 'react-icons/md'
 
 function Book() {
 
   const { t } = useTranslation();
 
+  const [showMore, setShowMore] = useState(true);
+  const [max, setMax] = useState(6);
   const [booksOne, setBooksOne] = useState([]);
   const [booksTwo, setBooksTwo] = useState([]);
   const [booksThree, setBooksThree] = useState([]);
@@ -58,6 +61,16 @@ function Book() {
     getBooks();
   }, []);
 
+  const handleShowMore = () => {
+    setShowMore(false);
+    setMax(booksOne.length)
+  };
+
+  const handleShowLess = () => {
+    setShowMore(true);
+    setMax(6);
+  };
+
   // Render the BookItem components inside the return statement
   return (
     <div>
@@ -68,62 +81,127 @@ function Book() {
         }}
       />
       <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat1')}</h2>
-      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        
-        {booksOne.map((book) => (
-          <BookItem
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          {booksOne.map((book, i) => {if (i < max) return(
+            <BookItem
             key={book.id} 
-            id={book.id}
-            name={book.name}
-            author={book.author}
-            pdf={book.pdf}
+            id= {book.id}
+            name= {book.name}
+            author= {book.author}
+            pdf= {book.pdf}
             imgs = {"https://kaleem-backend.000webhostapp.com/storage/"+book.imgs}
-          />
-        ))}
+            />
+          )})}
         </div>
+        <div>
+          {showMore && max < booksOne.length && (
+            <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+              <button className='showmore' onClick={handleShowMore} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+              {t('booksMore')} <MdExpandMore className="text-black" />
+              </button>
+            </div>
+          )}
+          {!showMore && (
+            <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+              <button className='showmore' onClick={handleShowLess} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+              {t('booksLess')} <MdExpandLess className="text-black" />
+              </button>
+            </div>
+          )}
+
+        </div>
+
 
         <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat2')}</h2>
         <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {booksTwo.map((book) => (
-          <BookItem
+        {booksTwo.map((book, i) => {if (i < max) return(
+            <BookItem
             key={book.id} 
-            id={book.id}
-            name={book.name}
-            author={book.author}
-            pdf={book.pdf}
+            id= {book.id}
+            name= {book.name}
+            author= {book.author}
+            pdf= {book.pdf}
             imgs = {"https://kaleem-backend.000webhostapp.com/storage/"+book.imgs}
-          />
-        ))}
+            />
+          )})}
       </div>
+      <div>
+        {showMore && max < booksTwo.length && (
+          <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+            <button className='showmore' onClick={handleShowMore} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+            {t('booksMore')} <MdExpandMore className="text-black" />
+            </button>
+          </div>
+        )}
+        {!showMore && (
+          <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+            <button className='showmore' onClick={handleShowLess} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+            {t('booksLess')} <MdExpandLess className="text-black" />
+            </button>
+          </div>
+        )}
+      </div>
+
       <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat3')}</h2>
-      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4   ">
-        
-        {booksThree.map((book) => (
-          <BookItem
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4   ">  
+        {booksTwo.map((book, i) => {if (i < max) return(
+            <BookItem
             key={book.id} 
-            id={book.id}
-            name={book.name}
-            author={book.author}
-            pdf={book.pdf}
+            id= {book.id}
+            name= {book.name}
+            author= {book.author}
+            pdf= {book.pdf}
             imgs = {"https://kaleem-backend.000webhostapp.com/storage/"+book.imgs}
-          />
-        ))}
-        </div>
+            />
+        )})}
+      </div>
+      <div>
+        {showMore && max < booksThree.length && (
+          <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+            <button className='showmore' onClick={handleShowMore} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+            {t('booksMore')}  <MdExpandMore className="text-black" />
+            </button>
+          </div>
+        )}
+        {!showMore && (
+          <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+            <button className='showmore' onClick={handleShowLess} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+            {t('booksLess')}  <MdExpandLess className="text-black" />
+            </button>
+          </div>
+        )}
+      </div>
 
         <h2 className={`font-normal text-dimYellow text-[28px] leading-[30.8px] my-4 book-heading`}>{t('booksCat4')}</h2>
       <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         
-        {booksFour.map((book) => (
-          <BookItem
+        {booksFour.map((book, i) => {if (i < max) return(
+            <BookItem
             key={book.id} 
-            id={book.id}
-            name={book.name}
-            author={book.author}
-            pdf={book.pdf}
+            id= {book.id}
+            name= {book.name}
+            author= {book.author}
+            pdf= {book.pdf}
             imgs = {"https://kaleem-backend.000webhostapp.com/storage/"+book.imgs}
-          />
-        ))}
-        </div>
+            />
+        )})}
+      </div>
+      <div>
+        {showMore && max < booksFour.length && (
+          <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+            <button className='showmore' onClick={handleShowMore} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+            {t('booksMore')}  <MdExpandMore className="text-black" />
+            </button>
+          </div>
+        )}
+        {!showMore && (
+          <div className="flex items-center justify-center mb-[35px] w-[45%] sm:w-[25%] md:w-[15%] mt-[15px] text-[16px] bg-white p-1 mx-auto">
+            <button className='showmore' onClick={handleShowLess} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem' }}>
+            {t('booksLess')}  <MdExpandLess className="text-black" />
+            </button>
+          </div>
+        )}
+      </div>
     </div>  
   );
 }
