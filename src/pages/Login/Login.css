@@ -17,10 +17,13 @@
     border-radius: 4px;
 }
 .form-login button {
-    background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
+  background: linear-gradient( 157.81deg, #def9fa -43.27%, #bef3f5 -21.24%, #9dedf0 12.19%, #7de7eb 29.82%, #5ce1e6 51.94%, #33bbcf 90.29% );
+  width: 100px;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 18px;
+  transition: background-color 0.2s;
   cursor: pointer;
 }

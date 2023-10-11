@@ -100,5 +100,8 @@
     "adminFormLabel2": "Article Text:", 
     "adminFormLabel3": "Image:",
     "adminButton": "Upload",
+    "articleTitle": "Our Recent Blogs",
+    "articleSubtitle": "Keep Updated With Kaleem",
+    "articleBtn": "Read More",
     "footerSocial": "Social Media" 
 }

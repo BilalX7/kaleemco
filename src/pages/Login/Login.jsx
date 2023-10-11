@@ -60,36 +60,6 @@ const loginUser = async () => {
   }
 };
 
-// const FormContainer = styled.div`
-//   max-width: 300px;
-//   margin: 0 auto;
-//   padding: 20px;
-//   border: 1px solid #ccc;
-// `;
-
-// const Label = styled.label`
-//   display: block;
-//   margin-bottom: 5px;
-//   text-color: #fff;
-// `;
-
-// const Input = styled.input`
-//   width: 100%;
-//   padding: 8px;
-//   margin-bottom: 10px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-// `;
-
-// const Button = styled.button`
-//   background-color: #4caf50;
-//   color: white;
-//   padding: 10px 15px;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-//  `;
-
 const handleEmailChange = (event) => {
     // setEmail(event.target.value);
     const email = document.getElementById("email").value;
@@ -115,7 +85,7 @@ const handlePasswordChange = (event) => {
                     <label className='text-slate-50' htmlFor="password">Password</label>
                     <input type="password" id="pass" onChange={handlePasswordChange} name="password" />
 
-                    <button onClick={loginUser} type="button">Login</button>
+                    <button className='bg-blue-gradient btn-login' onClick={loginUser} type="button">Login</button>
                 </form>
             {/* </FormContainer> */}
         </div>

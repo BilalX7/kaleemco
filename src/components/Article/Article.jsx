@@ -3,12 +3,14 @@ import styles from '../../style';
 import './Article.css';
 import MainHeading from '../MainHeading/MainHeading';
 import { Link } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 import { db } from '../../firebase-config';
 import { collection, query, getDocs, orderBy } from 'firebase/firestore';
 import { getStorage, ref, getDownloadURL, listAll } from 'firebase/storage';
 
 const Article = () => {
+  const { t } = useTranslation();
+
   const articleCollection = collection(db, 'article');
   const [articles, setArticles] = useState([]); // Initialize as an empty array
   const [imageList, setImageList] = useState([]);
@@ -60,8 +62,8 @@ const Article = () => {
     <>
       <MainHeading
         properties={{
-          title: 'Our Recent Blogs',
-          subtitle: 'Keep Updated With Kaleem',
+          title: t('articleTitle'),
+          subtitle: t('articleSubtitle'),
         }}
       />
       <section id='blog' className={`${styles.flexCenter} ${styles.paddingX}`}>
@@ -82,7 +84,7 @@ const Article = () => {
                   {article.title}
                 </Link>
                 <p>{article.text}</p>
-                <Link to={`/FullArticle/${index}`}>Read More</Link>
+                <Link to={`/FullArticle/${index}`}>{t('articleBtn')}</Link>
               </div>
             </div>
           ))}

@@ -100,5 +100,8 @@
     "adminFormLabel2": "محتوى المقال:", 
     "adminFormLabel3": "الصورة:" ,
     "adminButton": "رفع",
+    "articleTitle": "مدوناتنا الأخيرة",
+    "articleSubtitle": "ابقى على اطلاع مع كليم",
+    "articleBtn": "اقرأ المزيد",
     "footerSocial": "التواصل الاجتماعي" 
 }
