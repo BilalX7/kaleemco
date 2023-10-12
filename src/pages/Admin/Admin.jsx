@@ -29,9 +29,13 @@ const Admin = () => {
   // Get the current image ID from localStorage or start at 9999 if not present
   const initialImageId = parseInt(localStorage.getItem('imageId')) || 9999;
   const [imageId, setImageId] = useState(initialImageId);
+
+  useEffect(() => {
+    // Load the initial imageId from local storage and set it in the state
+    setImageId(initialImageId);
+  }, []); // Run this effect only when the component mounts
   
   const uploadImage = () => {
-
     if (image == null) return;
 
     // Generate a unique ID for the image using the current imageId
@@ -53,6 +57,7 @@ const Admin = () => {
         console.error('Error uploading image:', error);
       });
   };
+
 
   
 
