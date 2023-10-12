@@ -11,56 +11,105 @@ import { useTranslation } from 'react-i18next';
 import { storage } from '../../firebase-config'; // Make sure this import statement is present and the path to your firebase.js file is correct
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
+import { getDoc, setDoc, doc } from 'firebase/firestore';
 
 const Admin = () => {
-
   const { t } = useTranslation();
   
   const [title, settitle] = useState('');
   const [image, setimage] = useState(null);
   const [imageList, setImageList] = useState([]);
   const [text, settext] = useState('');
-  
-// Initialize imageCounter with 0
-// const [imageCounter, setImageCounter] = useState(0);
 
   const currentTime = new Date();
   
-  // Get the current image ID from localStorage or start at 9999 if not present
-  const initialImageId = parseInt(localStorage.getItem('imageId')) || 9999;
-  const [imageId, setImageId] = useState(initialImageId);
+  // // Get the current image ID from localStorage or start at 9999 if not present
+  // const initialImageId = parseInt(localStorage.getItem('imageId')) || 9999;
+  // const [imageId, setImageId] = useState(initialImageId);
 
-  useEffect(() => {
-    // Load the initial imageId from local storage and set it in the state
-    setImageId(initialImageId);
-  }, []); // Run this effect only when the component mounts
+  // useEffect(() => {
+  //   // Load the initial imageId from local storage and set it in the state
+  //   setImageId(initialImageId);
+  // }, []); // Run this effect only when the component mounts
   
-  const uploadImage = () => {
-    if (image == null) return;
+  // const uploadImage = () => {
+  //   if (image == null) return;
 
-    // Generate a unique ID for the image using the current imageId
-    const newImageId = imageId - 1;
-
-    // Create a reference for the image using the generated ID
-    const imageRef = ref(storage, `images/${newImageId}_${image.name}`);
-
-    // Upload the image
-    uploadBytes(imageRef, image)
-      .then(() => {
-        // Update the imageId for the next image (increment by 1)
-        setImageId(newImageId);
-
-        // Store the updated imageId in localStorage
-        localStorage.setItem('imageId', newImageId.toString());
-      })
-      .catch((error) => {
-        console.error('Error uploading image:', error);
-      });
-  };
-
-
+  //   // Generate a unique ID for the image using the current imageId
+  //   const newImageId = imageId - 1;
   
+  //   // Create a reference for the image using the generated ID
+  //   const imageRef = ref(storage, `images/${newImageId}_${image.name}`);
+  
+  //   // Upload the image
+  //   uploadBytes(imageRef, image)
+  //     .then(() => {
+    //       // Update the imageId for the next image (increment by 1)
+    //       setImageId(newImageId);
 
+  //       // Store the updated imageId in localStorage
+  //       localStorage.setItem('imageId', newImageId.toString());
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error uploading image:', error);
+  //     });
+  // };
+  const imageIdRef = doc(db, 'imageIds/imageId'); // 'imageIds' is the collection and 'imageId' is the document ID.
+const fetchImageId = async () => {
+  try {
+    const docSnapshot = await getDoc(imageIdRef);
+    if (docSnapshot.exists()) {
+      return docSnapshot.data().id;
+    } else {
+      // Create the document with an initial image ID if it doesn't exist
+      await setDoc(imageIdRef, { id: 9999 });
+      return 9999;
+    }
+  } catch (error) {
+    console.error('Error fetching image ID:', error);
+  }
+};
+
+// Function to update the image ID
+const updateImageId = async (newImageId) => {
+  try {
+    await setDoc(imageIdRef, { id: newImageId });
+  } catch (error) {
+    console.error('Error updating image ID:', error);
+  }
+};
+
+// In your component
+const [imageId, setImageId] = useState(9999); // Initialize with an initial value
+
+useEffect(() => {
+  // Fetch the image ID when the component mounts or when a user logs in.
+  fetchImageId().then((id) => setImageId(id));
+}, []);
+
+const uploadImage = () => {
+  if (image == null) return;
+
+  // Create a reference for the image using the fetched image ID
+  const newImageId = imageId - 1;
+  const imageRef = ref(storage, `images/${newImageId}_${image.name}`);
+
+  // Upload the image
+  uploadBytes(imageRef, image)
+    .then(() => {
+      // Update the image ID for the next image (decrement by 1)
+      setImageId(newImageId);
+
+      // Update the image ID in the Firestore collection
+      updateImageId(newImageId);
+    })
+    .catch((error) => {
+      console.error('Error uploading image:', error);
+    });
+};
+  
+  
+  
   const fetchData = async (event) => {
     event.preventDefault(); // Prevent default form submission
     uploadImage()
