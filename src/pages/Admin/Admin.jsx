@@ -55,7 +55,7 @@ const Admin = () => {
   //     });
   // };
   const imageIdRef = doc(db, 'imageIds/imageId'); // 'imageIds' is the collection and 'imageId' is the document ID.
-const fetchImageId = async () => {
+  const fetchImageId = async () => {
   try {
     const docSnapshot = await getDoc(imageIdRef);
     if (docSnapshot.exists()) {
